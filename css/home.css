@@ -151,6 +151,7 @@ p{
     display: block;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 .swiper-home_wrapper{
@@ -158,7 +159,7 @@ p{
     height: 100%;
 }
 
-.swiper-home_slide {
+.swiper-home_slide{
     width: 100%;
     height: 100%;
     text-align: center;

@@ -5,8 +5,10 @@ $(document).ready(function() {
 
     //init home slider
     var swiperHome = new Swiper('.swiper-home', {
-        speed: 3000,
-        effect: 'fade',
+        speed: 600,
+        autoplay: 1000,
+        direction: 'vertical',
+        //effect: 'fade',
         //containerModifierClass: 'swiper-home',
         wrapperClass: 'swiper-home_wrapper',
         slideClass: 'swiper-home_slide',
