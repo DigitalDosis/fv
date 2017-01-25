@@ -3,19 +3,9 @@ var isAnimating = false;
 
 $(document).ready(function() {
 
-    //init home slider
-    var swiperHome = new Swiper('.swiper-home', {
-        speed: 600,
-        autoplay: 1000,
-        direction: 'vertical',
-        //effect: 'fade',
-        //containerModifierClass: 'swiper-home',
-        wrapperClass: 'swiper-home_wrapper',
-        slideClass: 'swiper-home_slide',
-        slideActiveClass: 'swiper-home_slide-active',
-        slideNextClass: 'swiper-home_slide-next',
-        slidePrevClass: 'swiper-home_slide-prev'
-    });
+
+
+
 
     $('#home').smoothState({
         //prefetch: true,

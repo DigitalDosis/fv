@@ -119,12 +119,8 @@ p{
 .brand{
     position: fixed;
     display: block;
-    /*text-indent: -9999px;*/
     top: 50px;
     left: 50px;
-    /*background: url(../img/logotipo_FontVella.svg)no-repeat;*/
-    /*background-size: 61px 48px;*/
-    /*color: #393939;*/
     width: 61px;
     height: 48px;
     z-index: 9;
@@ -134,10 +130,17 @@ p{
     transition: all 600ms ease-out
 }
 
-.light .brand{
-    color: #bdbdbd;
+.light .brand{    
     width: 45px;
     height: 36px;
+}
+
+.logotipo{
+   fill: #393939; 
+}
+
+.light .logotipo{
+    fill: #bdbdbd;
 }
 
 .content {
@@ -145,6 +148,9 @@ p{
     width: 100%;
     height: 100%;
 }
+
+
+/* Home */
 
 .swiper-home{
     position: relative;
@@ -196,44 +202,14 @@ p{
     background: #eaeaea;
     -webkit-transition: all 1.1s cubic-bezier(.28,0,.07,1);
     transition: all 1.1s cubic-bezier(.28,0,.07,1);
-    /*-webkit-transition-delay: .3s;*/
-    /*transition-delay: .3s;*/
-    /*animation-duration: 1.1s;
-    animation-delay: .3s;
-    transition-timing-function: cubic-bezier(.28,0,.07,1);*/
-    /*animation-fill-mode: both;*/
-    /*animation-direction: alternate-reverse;*/
 }
-
-/*@keyframes SlideInUp {
-  0% {
-    height: 0;
-  }
-
-  100% {
-    height: 100vh;
-  }
-}
-
-@keyframes SlideOut {
-  0% {
-    height: 100vh;
-  }
-
-  100% {
-    height: 0;
-  }
-}*/
 
 .layer-mask.SlideInUp{
     height: 100vh;
-    /*animation-name: SlideInUp;*/
 }
 
-/*.top-mask{
-    bottom: auto;
-    top:0;
-}*/
+
+/* Hub */
 
 .container_composition{
     position: relative;
@@ -249,11 +225,6 @@ p{
     -o-transition: all 600ms cubic-bezier(.28,0,.07,1) .4s;
     transition: all 600ms cubic-bezier(.28,0,.07,1) .4s;
     top: 0px;
-/*    -webkit-transform: translateY(0px);
-  -moz-transform:    translateY(0px);
-  -ms-transform:     translateY(0px);
-  -o-transform:      translateY(0px);
-  transform:         translateY(0px);*/
 }
 
 .covered .image-mask-wrapper{
@@ -292,7 +263,7 @@ p{
 .title-mask-wrapper{
     position: relative;
     margin-bottom: 25px;
-    height: 48px;
+    height: 58px;
     right: 0;
     opacity: 1;
     -webkit-transition: right 800ms ease-out .5s, opacity 600ms ease-out .5s;
@@ -311,7 +282,7 @@ p{
     right: 0;
     overflow: hidden;
     width: 120%;
-    height: 48px;
+    height: 78px;
     -webkit-transition: all 1.2s cubic-bezier(.28,0,.07,1);
     transition: all 1.2s cubic-bezier(.28,0,.07,1);
     -webkit-transition-delay: .5s;
@@ -325,10 +296,11 @@ p{
 .title{
     font-family: Futuralt;
     font-size: 58px;
-    line-height: 48px;
+    line-height: 78px;
     font-size: bold;
     position: absolute;
     right: 0;
+    text-transform: uppercase;
 }
 
 .pretitle:before{
@@ -407,14 +379,6 @@ p{
 .covered .line_composition:before{
     width: 0px;
 }
-
-/*.line_composition:before{
-    content: '';
-    width: 73px;
-    height: 1px;
-    background: #515151;
-    display: inline-block;
-}*/
 
 .thumbnail{
     position: absolute;
@@ -512,5 +476,123 @@ p{
 .covered .btn:after{
     width: 0;
     opacity: 0;
+}
+
+.swiper-hub{
+    position: relative;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.swiper-hub_wrapper{
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-hub_slide{
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-hub_nav{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    height: 84px;
+    margin-top: -42px;
+    z-index: 9;
+}
+
+.swiper-hub_btn{
+    cursor: pointer;
+    font-weight: bold;
+    color: #bdbdbd;
+    height: 84px;
+    width: 35px;
+}
+
+.panel-btn-hub_nav{
+    position: absolute;
+    background: #bdbdbd;
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-hub_button-next{
+    position: relative;
+    float: right;
+}
+
+.swiper-hub_button-next .panel-btn-hub_nav{
+    right: -28px;
+}
+
+.swiper-hub_button-prev{
+    position: relative;
+    float: left;
+}
+
+.swiper-hub_button-prev .panel-btn-hub_nav{
+    left: -28px;
+}
+
+/* footer */
+
+footer{
+    position: fixed;
+    bottom:0;
+    left: 0;
+}
+
+.social{
+    position: relative;
+    bottom: 50px;
+    left: 50px;
+}
+
+.social:after{
+    width: 70px;
+    height: 1px;
+    background: #393939;
+    position: relative;
+    display: inline-block;
+    content: '';
+    top: -6px;
+}
+
+.light .social:after{
+    background: #bdbdbd;
+}
+
+.social-item{
+    display: inline-block;
+    height: 15px;
+    margin-right: 25px;
+}
+
+.social-item:last-child{
+    margin-right: 15px;
+}
+
+.fb{
+    width: 8px;
+}
+
+.tw{
+    width: 16px;
+}
+
+.inst{
+    width: 16px;
+}
+
+.social-svg{
+    fill: #393939;
+}
+
+.light .social-svg{
+    fill: #bdbdbd;
 }
 
