@@ -19,7 +19,8 @@
         </a>
     </header>
 
-    <div class="content" id="home">
+    <div id="main">
+	<div class="content">
         <div class="swiper-hub">
             <div class="swiper-wrapper swiper-hub_wrapper">
 
@@ -125,6 +126,7 @@
         
         <div class="layer-mask"></div>
     </div>
+    </div>
 
     <footer>
         <div class="social">
@@ -136,11 +138,42 @@
 
 	<script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/swiper.min.js"></script>
-	<script src="js/jquery.smoothState.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/ajax.js"></script>
+	<!-- <script src="js/jquery.smoothState.min.js"></script> -->
+    <!-- <script src="js/main.js"></script> -->
     <!-- <script src="js/sliderHub.js"></script> -->
     <script>
         $(window).ready(function() {
+        	//init hub slider
+            var swiperHub = new Swiper('.swiper-hub', {
+                wrapperClass: 'swiper-hub_wrapper',
+                slideClass: 'swiper-hub_slide',
+                slideActiveClass: 'swiper-hub_slide-active',
+                slideNextClass: 'swiper-hub_slide-next',
+                slidePrevClass: 'swiper-hub_slide-prev',
+                nextButton: '.swiper-hub_button-next',
+                prevButton: '.swiper-hub_button-prev',
+                speed: 600,
+                loop: true,
+                observer: true,
+                observeParents: true,
+                onSlideChangeStart: function (swiper) {
+                            console.log('slide change start - before');
+                            console.log(swiper);
+                            console.log(swiper.activeIndex);
+                            //before Event use it for your purpose
+                },
+                onSlideChangeEnd: function(swiper){
+                        console.log('slide change start - end');
+                        $('.container_composition').removeClass('covered');
+                },
+                pagination: '.hub-pagination',
+                paginationClickable: true,
+                paginationBulletRender: function (swiper, index, className) {
+                      return '<span class="' + className + '">0' + (index + 1) + '</span>';
+                }
+            });
+        	
              var mySwiperHub = $('.swiper-hub')[0].swiper;
              mySwiperHub.update();
              mySwiperHub.lockSwipes();

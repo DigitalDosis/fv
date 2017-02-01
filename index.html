@@ -20,17 +20,19 @@
         </a>
     </header>
 
-    <div class="content" id="home">
-        <a href="hub.html">
-            <div class="swiper-home">
-                <div class="swiper-home_wrapper">
-                    <div class="swiper-home_slide image" style="background-image:url('img/02.jpg');"></div>
-                    <div class="swiper-home_slide image" style="background-image:url('img/02.jpg');"></div>
-                </div>
-            </div>
-        </a>
-        <div class="layer-mask"></div>
-    </div>
+    <div id="main">
+	    <div class="content">
+	        <a href="hub.html" data-type="page-transition">
+	            <div class="swiper-home">
+	                <div class="swiper-home_wrapper">
+	                    <div class="swiper-home_slide image" style="background-image:url('img/02.jpg');"></div>
+	                    <div class="swiper-home_slide image" style="background-image:url('img/02.jpg');"></div>
+	                </div>
+	            </div>
+	        </a>
+	        <div class="layer-mask"></div>
+	    </div>
+	</div>
 
     <footer>
         <div class="social">
@@ -44,15 +46,26 @@
 
 	<script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/swiper.min.js"></script>
-	<script src="js/jquery.smoothState.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/ajax.js"></script>
+	<!-- <script src="js/jquery.smoothState.min.js"></script> -->
+    <!-- <script src="js/main.js"></script> -->
 
     <script>
         $(window).ready(function() {
+        //init home slider
+        var swiperHome = new Swiper('.swiper-home', {
+            speed: 600,
+            autoplay: 1000,
+            direction: 'vertical',
+            //effect: 'fade',
+            //containerModifierClass: 'swiper-home',
+            wrapperClass: 'swiper-home_wrapper',
+            slideClass: 'swiper-home_slide',
+            slideActiveClass: 'swiper-home_slide-active',
+            slideNextClass: 'swiper-home_slide-next',
+            slidePrevClass: 'swiper-home_slide-prev'
+        });
     
-    
-    
-
         });
     </script>
 
