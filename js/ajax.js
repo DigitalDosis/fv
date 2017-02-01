@@ -1,75 +1,115 @@
 var isAnimating = false;
-var isForward = false;
 var newPage;
+var currentPage;
+var sections = { 
+	home : {
+		animationTimeEnter: 1000,
+		animationTimeExit: 2000,
+		animationFunctionEnter: function() { homeAnimationEnter(); },
+		animationFunctionExit: function() { homeAnimationExit(); }
+	},
+	hub : {
+		animationTimeEnter: 1000,
+		animationTimeExit: 2000,
+		animationFunctionEnter: function() { hubAnimationEnter(); },
+		animationFunctionExit: function() { hubAnimationExit(); }
+	},
+	landing: {
+		animationTimeEnter: 1000,
+		animationTimeExit: 2000,
+		animationFunctionEnter: function() { landingAnimationEnter() },
+		animationFunctionExit: function() { landingAnimationExit() } 
+	}
+};
+
 
 $(document).ready(function() {
+	var pageArray = location.pathname.split('/');
+	currentPage = pageArray[pageArray.length - 1];
 
 	$('#main').on('click', '[data-type="page-transition"]', function(event){
 	    event.preventDefault();
 	    //detect which page has been selected
 	    newPage = $(this).attr('href');
 	    //if the page is not animating - trigger animation
-	    if( !isAnimating ) changePage(newPage, true, isForward);
+	    if( !isAnimating ) changePage(newPage);
 	});
+
 
 	$(window).on('popstate', function() {
 	    var newPageArray = location.pathname.split('/'),
-	        //this is the url of the page to be loaded 
 	        newPage = newPageArray[newPageArray.length - 1];
-	        console.log(newPageArray);
-	        console.log(newPage);
-	        isForward = true;
-	        console.log(isForward);
-	    	changePage(newPage, true , true);
+	    	changePage(newPage);
 	});
 
 });
 
-function changePage(url, bool, forward) {
+function changePage(url) {
 	var newSectionName = url.replace('.html', '');
+
+	currentPage === "" ? currentPage = 'home' : currentPage;
+	newSectionName === "" ? newSectionName = 'home' : newSectionName;
+
     isAnimating = true;
-    // trigger page animation exit
-    if(!forward){
-    	$('header, footer').toggleClass('grey');
-		$('.layer-mask').toggleClass('SlideInUp');
-		console.log('trigger page animation exit');
-		//...
-	    setTimeout(function() {
-	    	loadNewContent(url, bool);
-	    }, 1000);
-	    //...
-    }else{
-    	$('.container_composition').toggleClass('covered');
-    	console.log(forward);
-    	//...
-	    setTimeout(function() {
-	    	loadNewContent(url, bool);
-	    }, 2000);
-	    //...
-    }
+	sections[currentPage].animationFunctionExit();
+	setTimeout(function() {
+		loadNewContent(url);
+	}, sections[currentPage].animationTimeExit);
+
+	currentPage = newSectionName;
 }
 
-function loadNewContent(url, bool){
-	var newSectionName = url.replace('.html', '');
+function loadNewContent(url){
   	var section = $('<div class="ajax"></div>');
 
   	section.load( url + ' .content', function(event){
-  		console.log('load new content and replace old content with the new one');
-  		// load new content and replace old content with the new one
-
+		  
       	$('#main').html(section);
-      	//Animate new content
-      	setTimeout(function() {
-      		$('.container_composition').toggleClass('covered');
-      	}, 600);
-      	//...
 
+      	setTimeout(function() {
+      		sections[currentPage.replace('.html', '')].animationFunctionEnter();
+      	}, 600);
 
       	//Update history
       	if(url != window.location){
-        	//add the new page to the window.history
         	window.history.pushState({path: url},'',url);
       	}
   	});
 
 }
+
+/** Animation callbacks **/
+
+var homeAnimationEnter = function () {
+	console.log("home Enter");
+
+	$('header, footer').toggleClass('grey');
+	$('.layer-mask').toggleClass('SlideInUp');
+};
+
+var homeAnimationExit = function () {
+	console.log("home Exit");
+	
+	$('header, footer').toggleClass('grey');
+	$('.layer-mask').toggleClass('SlideInUp');
+};
+
+var hubAnimationEnter = function () {
+	console.log("hub Enter");
+
+	$('.container_composition').toggleClass('covered');
+};
+
+var hubAnimationExit = function () {
+	console.log("hub Exit");
+
+	$('.container_composition').toggleClass('covered');
+};
+
+var landingAnimationEnter = function () {
+	console.log("landing Enter");
+};
+
+var landingAnimationExit = function () {
+	console.log("landing Exit");
+};
