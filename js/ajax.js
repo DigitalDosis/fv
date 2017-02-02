@@ -1,4 +1,5 @@
 var isAnimating = false;
+var isBackwards = false;
 var newPage;
 var currentPage;
 var sections = { 
@@ -29,6 +30,9 @@ $(document).ready(function() {
 
 	$('#main').on('click', '[data-type="page-transition"]', function(event){
 	    event.preventDefault();
+
+		isBackwards = false;
+
 	    //detect which page has been selected
 	    newPage = $(this).attr('href');
 	    //if the page is not animating - trigger animation
@@ -36,14 +40,13 @@ $(document).ready(function() {
 	});
 
 
-	$(window).on('popstate', function(event) {
-
-		console.log(event.state);
-
-	    var newPageArray = location.pathname.split('/'),
+	window.addEventListener('popstate', function(event) {
+		var newPageArray = location.pathname.split('/'),
 	        newPage = newPageArray[newPageArray.length - 1];
-	        console.log(newPageArray);
-	    	changePage(newPage);
+
+		isBackwards = true;
+
+		changePage(newPage);
 	});
 
 
@@ -70,23 +73,23 @@ function loadNewContent(url){
 
   	section.load( url + ' .content', function(event){
 		  
-      	$('#main').html(section);
+		$(section).find('.layer-mask').addClass('SlideInUp');
+      	
+		$('#main').html(section);
 
       	setTimeout(function() {
-      		sections[currentPage.replace('.html', '')].animationFunctionEnter();
+      		sections[currentPage].animationFunctionEnter();
+			//Si hemos terminado la animación de entrada
+			setTimeout(function() {
+				isAnimating = false;
+			}, sections[currentPage].animationTimeEnter);
       	}, 600);
 
-      	//Si hemos terminado la animación de entrada
-      	setTimeout(function(){
-      		isAnimating = false;
-      	}, sections[currentPage].animationTimeEnter);
-
       	//Update history
-      	if(url != window.location){
-        	window.history.pushState({path: url},'',url);
+      	if( !isBackwards ){
+        	window.history.pushState({ path: url }, currentPage, url);
       	}
 
-      	
   	});
 
 }
@@ -97,6 +100,7 @@ var homeAnimationEnter = function () {
 	console.log("home Enter");
 
 	$('header, footer').toggleClass('grey');
+	$('.layer-mask').removeClass('SlideInUp');
 	//initSliderHome();
 };
 
