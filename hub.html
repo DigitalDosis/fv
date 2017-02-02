@@ -47,7 +47,7 @@
                             </div>
                             <div class="middle_composition content_composition">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita.</p>
-                                <div class="btn"><a href="landing.html">Ver más</a></div>
+                                <div class="btn"><a href="landing.html" data-type="page-transition">Ver más</a></div>
                             </div>
                         </div>
                     </div>
@@ -124,7 +124,6 @@
             </div>
         </div>
         
-        <div class="layer-mask"></div>
     </div>
     </div>
 
@@ -174,9 +173,9 @@
                 }
             });
         	
-             var mySwiperHub = $('.swiper-hub')[0].swiper;
-             mySwiperHub.update();
-             mySwiperHub.lockSwipes();
+             //var mySwiperHub = $('.swiper-hub')[0].swiper;
+             //mySwiperHub.update();
+             swiperHub.lockSwipes();
             
 
             $('.swiper-hub_button-next').click(function() {
