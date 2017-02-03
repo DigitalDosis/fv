@@ -50,7 +50,59 @@ $(document).ready(function() {
 	});
 
 
+	$('.hamburger').on('click', function(){
+		$(this).toggleClass('is-active');
+		$('.main-menu-container').toggleClass('show');
+	});
+
+	initSwiperMenu();
+
+
 });
+
+function initSwiperMenu(){
+	//Initialize SwiperMenu
+	var swiperMenu = new Swiper('.nav-menu-items-container', {
+        initialSlide: 1,
+        parallax: true,
+        grabCursor: true,
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        paginationClickable: true,
+        speed: 900,
+        spaceBetween: 25,
+		/*  onTouchMoveOpposite: function (swiper, e){
+        	console.log(swiper);
+        	console.log(swiper.touches.startY + 'start  ');
+        	console.log(swiper.touches.currentY + 'current  ');
+        }, */
+       onSlideChangeStart: function(swiperMenu){
+        	$('.nav-main-menu-container li').removeClass('high');
+        	var navHigh = '#' + swiperMenu.activeIndex;
+        	$( navHigh ).addClass('high');
+        }
+    });
+
+	//nav-menu slide pagination
+	$('.nav-main-menu-container li').on('mouseenter', function(){
+        var el = $(this).attr('id');
+        swiperMenu.slideTo(el);
+    });
+
+	//Add effects on active-slide
+    $( '.nav-main-menu-container li' ).hover(
+	  function() {
+	  	$( '.nav-main-menu-container li').not($( this ) ).css('opacity', 0.3);
+	    $( this ).addClass( 'high' );
+	    $('.nav-menu-items-container .swiper-slide').not( $('.swiper-slide-active') ).css('opacity', 0.5);
+	    $('.nav-menu-items-container .swiper-slide-active').css('opacity', 1);
+	  }, function() {
+	  	$( '.nav-main-menu-container li').css('opacity', 1);
+	    $( this ).removeClass( 'high' );
+	  }
+	);
+	
+}
 
 function changePage(url) {
 	var newSectionName = url.replace('.html', '');
@@ -124,6 +176,10 @@ var hubAnimationExit = function () {
 
 var landingAnimationEnter = function () {
 	console.log("landing Enter");
+
+/*	$('.image-mask-layer').toggleClass('scale');
+	$('header, footer').removeClass();
+	$('header, footer').addClass('white');*/
 };
 
 var landingAnimationExit = function () {
