@@ -156,7 +156,6 @@ p{
     fill: #fff;
 }
 
-
 /*!
  * Hamburgers
  * @description Tasty CSS-animated hamburgers
@@ -234,6 +233,7 @@ p{
     transform: translate3d(0, 10px, 0) rotate(-45deg); }
 
 /* custom hamburger */
+
 .hamburger{
      position: fixed;
      right: 58px;
@@ -254,7 +254,7 @@ p{
 .main-menu-container{
     position: fixed;
     top:0;
-    left: 0;
+    left: 100%;
     width: 100%;
     height: 100%;
     background-color: #eaeaea;
