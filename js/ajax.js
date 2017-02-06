@@ -12,7 +12,7 @@ var sections = {
 	hub : {
 		animationTimeEnter: 2000,
 		animationTimeExit: 1000,
-		//animationTimeExitToBack: 1000, ???
+		//animationTimeExitToBack: 1000
 		animationFunctionEnter: function() { hubAnimationEnter(); },
 		animationFunctionExit: function() { hubAnimationExit(); },
 		animationFunctionEnterFromBack: function() { hubAnimationEnterFromBack(); },
@@ -63,7 +63,6 @@ $(document).ready(function() {
 	//landing text block
 	$('.arrow-down').on('click', function(){
 		var step = $('.block-cover').height();
-		console.log('click');
 		$('.content-landing').css('bottom', step + 'px');
 	});
 
@@ -74,14 +73,6 @@ $(document).ready(function() {
 	        jQuery('.content-landing').css('bottom', 0 + 'px');
 	    }
 	});
-
-
-	$('.hamburger').on('click', function(){
-		$(this).toggleClass('is-active');
-		$('.main-menu-container').toggleClass('show');
-	});
-
-	initSwiperMenu();
 
 
 });
