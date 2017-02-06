@@ -56,6 +56,7 @@ $(document).ready(function() {
 	$('.hamburger').on('click', function(){
 		$(this).toggleClass('is-active');
 		$('.main-menu-container').toggleClass('show');
+		$('.content').toggleClass('menu-visible');
 	});
 
 	initSwiperMenu();
