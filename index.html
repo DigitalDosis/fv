@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/hamburgers.css">
     <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="css/home.css">
 
@@ -39,7 +38,7 @@
                <li id="5">En casa</li>
            </ul>
 
-        </div> <!-- #main -->
+        </div> 
         <div class="nav-menu-items-container">
        
            <div class="swiper-wrapper">
@@ -80,19 +79,21 @@
                     </a>
                 </div>
            </div>
-           <!-- Add Pagination 
-            <div class="swiper-pagination"></div> -->
 
-        </div> <!-- #main -->
-    </div> <!-- #main-container -->
+        </div> <!-- nav-menu-items-container -->
+    </div> <!-- .main-menu-container -->
 
     <div id="main">
 	    <div class="content">
 	        <a href="hub.html" data-type="page-transition">
 	            <div class="swiper-home">
 	                <div class="swiper-home_wrapper">
-	                    <div class="swiper-home_slide image" style="background-image:url('img/02.jpg');"></div>
-	                    <div class="swiper-home_slide image" style="background-image:url('img/02.jpg');"></div>
+	                    <div class="swiper-home_slide image" style="background-image:url('img/02.jpg');">
+                         <h1>He decidido no ser<br>perfecta y #nopasanada</h1>   
+                        </div>
+	                    <div class="swiper-home_slide image" style="background-image:url('img/02.jpg');">
+                         <h1>He decidido no ser<br>perfecta y #siquepasa</h1>
+                        </div>
 	                </div>
 	            </div>
 	        </a>
@@ -113,8 +114,6 @@
 	<script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/swiper.min.js"></script>
     <script src="js/ajax.js"></script>
-	<!-- <script src="js/jquery.smoothState.min.js"></script> -->
-    <!-- <script src="js/main.js"></script> -->
 
     <script>
         $(window).ready(function() {
@@ -123,8 +122,6 @@
                 speed: 600,
                 autoplay: 1000,
                 direction: 'vertical',
-                //effect: 'fade',
-                //containerModifierClass: 'swiper-home',
                 wrapperClass: 'swiper-home_wrapper',
                 slideClass: 'swiper-home_slide',
                 slideActiveClass: 'swiper-home_slide-active',

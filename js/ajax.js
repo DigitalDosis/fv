@@ -5,19 +5,22 @@ var currentPage;
 var sections = { 
 	index : {
 		animationTimeEnter: 1000,
-		animationTimeExit: 2000,
+		animationTimeExit: 1000,
 		animationFunctionEnter: function() { homeAnimationEnter(); },
 		animationFunctionExit: function() { homeAnimationExit(); }
 	},
 	hub : {
-		animationTimeEnter: 1000,
-		animationTimeExit: 2000,
+		animationTimeEnter: 2000,
+		animationTimeExit: 1000,
+		//animationTimeExitToBack: 1000, ???
 		animationFunctionEnter: function() { hubAnimationEnter(); },
-		animationFunctionExit: function() { hubAnimationExit(); }
+		animationFunctionExit: function() { hubAnimationExit(); },
+		animationFunctionEnterFromBack: function() { hubAnimationEnterFromBack(); },
+		animationFunctionExitToBack: function() { hubAnimationExitToBack(); }
 	},
 	landing: {
 		animationTimeEnter: 1000,
-		animationTimeExit: 2000,
+		animationTimeExit: 2600,
 		animationFunctionEnter: function() { landingAnimationEnter() },
 		animationFunctionExit: function() { landingAnimationExit() } 
 	}
@@ -28,7 +31,7 @@ $(document).ready(function() {
 	var pageArray = location.pathname.split('/');
 	currentPage = pageArray[pageArray.length - 1].replace('.html', '');
 
-	$('#main').on('click', '[data-type="page-transition"]', function(event){
+	$('body').on('click', '[data-type="page-transition"]', function(event){
 	    event.preventDefault();
 
 		isBackwards = false;
@@ -49,13 +52,28 @@ $(document).ready(function() {
 		changePage(newPage);
 	});
 
-
+	//toggle menu
 	$('.hamburger').on('click', function(){
 		$(this).toggleClass('is-active');
 		$('.main-menu-container').toggleClass('show');
 	});
 
 	initSwiperMenu();
+
+	//landing text block
+	$('.arrow-down').on('click', function(){
+		var step = $('.block-cover').height();
+		console.log('click');
+		$('.content-landing').css('bottom', step + 'px');
+	});
+
+	//scroll step landing
+	jQuery('.block-section').scroll(function() {
+	    var st = jQuery(this).scrollTop();
+	    if(st < 1){
+	        jQuery('.content-landing').css('bottom', 0 + 'px');
+	    }
+	});
 
 
 });
@@ -111,7 +129,13 @@ function changePage(url) {
 	newSectionName === "" ? newSectionName = 'index' : newSectionName;
 
     isAnimating = true;
-	sections[currentPage].animationFunctionExit();
+
+    if( isBackwards == true && newSectionName == 'index' ){
+		sections[currentPage].animationFunctionExitToBack();
+    }else{
+    	sections[currentPage].animationFunctionExit();
+    }
+
 	setTimeout(function() {
 		currentPage = newSectionName;
 		loadNewContent(url);
@@ -126,11 +150,21 @@ function loadNewContent(url){
   	section.load( url + ' .content', function(event){
 		  
 		$(section).find('.layer-mask').addClass('SlideInUp');
+		if( isBackwards ){
+			$(section).find('.layer').addClass('covered');
+			$(section).find('.container_composition').removeClass('covered');
+		};
       	
 		$('#main').html(section);
+		$('.main-menu-container').removeClass('show');
+		$('.hamburger').removeClass('is-active');
 
       	setTimeout(function() {
-      		sections[currentPage].animationFunctionEnter();
+      		if( isBackwards == true && currentPage == 'hub' ){
+		        sections[currentPage].animationFunctionEnterFromBack();
+      		}else{
+      			sections[currentPage].animationFunctionEnter();
+      		}
 			//Si hemos terminado la animación de entrada
 			setTimeout(function() {
 				isAnimating = false;
@@ -151,9 +185,9 @@ function loadNewContent(url){
 var homeAnimationEnter = function () {
 	console.log("home Enter");
 
-	$('header, footer').toggleClass('grey');
+	initSliderHome();
+	$('header, footer').removeClass('grey');
 	$('.layer-mask').removeClass('SlideInUp');
-	//initSliderHome();
 };
 
 var homeAnimationExit = function () {
@@ -171,19 +205,39 @@ var hubAnimationEnter = function () {
 var hubAnimationExit = function () {
 	console.log("hub Exit");
 
+	$('.layer').toggleClass('covered');
+};
+
+var hubAnimationEnterFromBack = function () {
+	console.log('EnterFromBack => transicion de entrada a hub desde landing');
+
+	initSliderHub();
+};
+
+var hubAnimationExitToBack = function () {
+	console.log('ExitToBack => transicion de salida de hub a entrada index');
+
 	$('.container_composition').toggleClass('covered');
+	$('header, footer').removeClass('grey');
 };
 
 var landingAnimationEnter = function () {
 	console.log("landing Enter");
 
-/*	$('.image-mask-layer').toggleClass('scale');
-	$('header, footer').removeClass();
-	$('header, footer').addClass('white');*/
+	$('.image-mask-layer').addClass('scale');
+	$('.container-text').addClass('showed');
+	setTimeout(function(){
+		$('.cover').removeClass('start');
+	}, 900);
+	$('header, footer').removeClass('grey').addClass('white');
 };
 
 var landingAnimationExit = function () {
 	console.log("landing Exit");
+
+	$('.image-mask-layer').removeClass('scale');
+	$('.container-text').removeClass('showed');
+	$('header, footer').removeClass('white').addClass('grey');
 };
 
 function initSliderHome(){
@@ -191,16 +245,11 @@ function initSliderHome(){
 	    speed: 600,
 	    autoplay: 1000,
 	    direction: 'vertical',
-	    //effect: 'fade',
-	    //containerModifierClass: 'swiper-home',
 	    wrapperClass: 'swiper-home_wrapper',
 	    slideClass: 'swiper-home_slide',
 	    slideActiveClass: 'swiper-home_slide-active',
 	    slideNextClass: 'swiper-home_slide-next',
 	    slidePrevClass: 'swiper-home_slide-prev',
-	    /*onInit: function(){
-			       
-			    }*/
 	});
 }
 
@@ -234,11 +283,11 @@ function initSliderHub(){
                 },
                 onInit: function(){
 			       $('.container_composition').removeClass('covered');
+			       $('.layer').removeClass('covered');
 			    }
             });
         	
-             //var mySwiperHub = $('.swiper-hub')[0].swiper;
-             //mySwiperHub.update();
+
              swiperHub.lockSwipes();
 
              //events actions sliderHub functions
