@@ -150,23 +150,22 @@ function loadNewContent(url){
   	var section = $('<div class="ajax"></div>');
 
   	section.load( url + ' .content', function(event){
-		  
+
 		$(section).find('.layer-mask').addClass('SlideInUp');
 		if( isBackwards ){
-			$(section).find('.layer').addClass('covered');
-			$(section).find('.container_composition').removeClass('covered');
-		};
+			$(section).find('[data-index="' + currentLandingPosition + '"] .layer').addClass('covered');
+			$(section).find('[data-index="' + currentLandingPosition + '"] .container_composition').removeClass('covered');
+		}
       	
 		$('#main').html(section);
+		if( isBackwards == true && currentPage == 'hub' ) {
+			sections[currentPage].animationFunctionEnterFromBack();
+		}
 		$('.main-menu-container').removeClass('show');
 		$('.hamburger').removeClass('is-active');
 
       	setTimeout(function() {
-      		if( isBackwards == true && currentPage == 'hub' ){
-		        sections[currentPage].animationFunctionEnterFromBack();
-      		}else{
-      			sections[currentPage].animationFunctionEnter();
-      		}
+			if ( !isBackwards ) { sections[currentPage].animationFunctionEnter(); }
 			//Si hemos terminado la animación de entrada
 			setTimeout(function() {
 				isAnimating = false;
@@ -264,71 +263,71 @@ function initSliderHome(){
 
 function initSliderHub(){
 	 var swiperHub = new Swiper('.swiper-hub', {
-                wrapperClass: 'swiper-hub_wrapper',
-                slideClass: 'swiper-hub_slide',
-                slideActiveClass: 'swiper-hub_slide-active',
-                slideNextClass: 'swiper-hub_slide-next',
-                slidePrevClass: 'swiper-hub_slide-prev',
-                nextButton: '.swiper-hub_button-next',
-                prevButton: '.swiper-hub_button-prev',
-                initialSlide: currentLandingPosition,
-                speed: 600,
-                loop: true,
-                observer: true,
-                observeParents: true,
-                onSlideChangeStart: function (swiper) {
-                            console.log('slide change start - before');
-                            console.log(swiper);
-                            console.log(swiper.activeIndex);
-                            //before Event use it for your purpose
-                },
-                onSlideChangeEnd: function(swiper){
-                        console.log('slide change start - end');
-                        $('.container_composition').removeClass('covered');
-                },
-                pagination: '.hub-pagination',
-                paginationClickable: true,
-                paginationBulletRender: function (swiper, index, className) {
-                      return '<span class="' + className + '">0' + (index + 1) + '</span>';
-                },
-                onInit: function(){
-			       $('.container_composition').removeClass('covered');
-			       $('.layer').removeClass('covered');
-			    }
-            });
-        	
+		wrapperClass: 'swiper-hub_wrapper',
+		slideClass: 'swiper-hub_slide',
+		slideActiveClass: 'swiper-hub_slide-active',
+		slideNextClass: 'swiper-hub_slide-next',
+		slidePrevClass: 'swiper-hub_slide-prev',
+		nextButton: '.swiper-hub_button-next',
+		prevButton: '.swiper-hub_button-prev',
+		initialSlide: currentLandingPosition,
+		speed: 600,
+		loop: true,
+		observer: true,
+		observeParents: true,
+		onSlideChangeStart: function (swiper) {
+			console.log('slide change start - before');
+			console.log(swiper);
+			console.log(swiper.activeIndex);
+			//before Event use it for your purpose
+		},
+		onSlideChangeEnd: function(swiper){
+			console.log('slide change start - end');
+			$('.container_composition').removeClass('covered');
+		},
+		pagination: '.hub-pagination',
+		paginationClickable: true,
+		paginationBulletRender: function (swiper, index, className) {
+			return '<span class="' + className + '">0' + (index + 1) + '</span>';
+		},
+		onInit: function(){
+			$('.container_composition').removeClass('covered');
+			$('.layer').removeClass('covered');
+		}
+	});
+	
 
-             swiperHub.lockSwipes();
+	swiperHub.lockSwipes();
 
-             //events actions sliderHub functions
-			$('.swiper-hub_button-next').click(function() {
-		        $('.container_composition').addClass('covered');
-		        setTimeout(function() {
-		          swiperHub.unlockSwipes();
-		          swiperHub.slideNext();
-		          swiperHub.lockSwipes();
-		        }, 2000);
-		    });
+		//events actions sliderHub functions
+	$('.swiper-hub_button-next').click(function() {
+		$('.container_composition').addClass('covered');
+		setTimeout(function() {
+			swiperHub.unlockSwipes();
+			swiperHub.slideNext();
+			swiperHub.lockSwipes();
+		}, 2000);
+	});
 
-		    $('.swiper-hub_button-prev').click(function() {
-		        $('.container_composition').addClass('covered');
-		        setTimeout(function() {
-		          swiperHub.unlockSwipes();
-		          swiperHub.slidePrev();
-		          swiperHub.lockSwipes();
-		        }, 2000);
-		    });
+	$('.swiper-hub_button-prev').click(function() {
+		$('.container_composition').addClass('covered');
+		setTimeout(function() {
+			swiperHub.unlockSwipes();
+			swiperHub.slidePrev();
+			swiperHub.lockSwipes();
+		}, 2000);
+	});
 
-		    $('.swiper-pagination-bullet').click(function() {
-		        $('.container_composition').addClass('covered');
-		        var slideNumber = $(this).html();
-		        console.log(slideNumber);
-		        setTimeout(function() {
-		          swiperHub.unlockSwipes();
-		          swiperHub.slideTo(slideNumber);
-		          swiperHub.lockSwipes();
-		        }, 2000);
-		    });
+	$('.swiper-pagination-bullet').click(function() {
+		$('.container_composition').addClass('covered');
+		var slideNumber = $(this).html();
+		console.log(slideNumber);
+		setTimeout(function() {
+			swiperHub.unlockSwipes();
+			swiperHub.slideTo(slideNumber);
+			swiperHub.lockSwipes();
+		}, 2000);
+	});
 }
 
 function listenScrollLanding(){
