@@ -165,7 +165,7 @@ function loadNewContent(url){
 		$('.hamburger').removeClass('is-active');
 
       	setTimeout(function() {
-			if ( !isBackwards ) { sections[currentPage].animationFunctionEnter(); }
+			if ( isBackwards == false || currentPage != 'hub' ) { sections[currentPage].animationFunctionEnter(); }
 			//Si hemos terminado la animación de entrada
 			setTimeout(function() {
 				isAnimating = false;
