@@ -117,6 +117,10 @@ p{
     margin: 0 0 10px 0;
 }
 
+p strong{
+    font-family: 'Asap-Bold';
+}
+
 .brand{
     position: fixed;
     display: block;
@@ -154,6 +158,10 @@ p{
 
 .white .logotipo{
     fill: #fff;
+}
+
+.white{
+    color: #fff !important;
 }
 
 /*!
@@ -198,7 +206,7 @@ p{
     transition-property: transform;
     transition-duration: 0.15s;
     transition-timing-function: ease; }
-  .grey .hamburger-inner, .grey .hamburger-inner::before, .grey .hamburger-inner::after{
+  .grey .hamburger-inner, .grey .hamburger-inner::before, .grey .hamburger-inner::after, .white .hamburger-inner, .white .hamburger-inner::before, .white .hamburger-inner::after{
     background-color: #bdbdbd; 
   }
   .hamburger-inner::before, .hamburger-inner::after {
@@ -247,6 +255,7 @@ p{
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .content {
@@ -522,7 +531,7 @@ p{
     position: relative;
     margin-left: 106px;
     top: 150px;
-    width: 702px;
+    width: 704px;
 }
 
 .image-mask-wrapper{
@@ -586,6 +595,10 @@ p{
     opacity: 0;
 }
 
+.eresimpulso-hub .covered .title-mask-wrapper{
+    right: -50px;
+}
+
 .title-mask{
     position: absolute;
     right: 0;
@@ -612,12 +625,12 @@ p{
 }
 
 .pretitle:before{
-    content: 'Font Vella presenta';
+    content: 'Font Vella presenta:';
     font-family: 'Asap-Italic';
     font-size: 14px;
     line-height: 24px;
     position: absolute;
-    top: -24px;
+    top: -14px;
     left: 0;
     opacity: 1;
     -webkit-transition: all 600ms ease-out 1.5s;
@@ -631,10 +644,32 @@ p{
     left: -100px;
 }
 
+.encasa-hub .pretitle:before{
+    content: 'FONT VELLA';
+    font-family: Futuralt;
+    font-size: 38px;
+    line-height: 30px;
+    position: absolute;
+    top: -20px;
+    left: 220px;
+    width: 240px;
+    opacity: 1;
+    -webkit-transition: all 600ms ease-out 1.5s;
+    -moz-transition: all 600ms ease-out 1.5s;
+    -o-transition: all 600ms ease-out 1.5s;
+    transition: all 600ms ease-out 1.5s;
+}
+
+.encasa-hub .covered .pretitle:before{
+    opacity: 0;
+    left: 180px;
+}
+
 .middle_composition{
     width: 204px;
     float: left;
     position: relative;
+    min-height: 200px;
 }
 
 .middle_composition:first-child{
@@ -647,17 +682,24 @@ p{
     text-align: right;
     padding-right: 15px;
     opacity: 1;
-    -webkit-transition: all 600ms ease-out 1.2s;
-    -moz-transition: all 600ms ease-out 1.2s;
-    -o-transition: all 600ms ease-out 1.2s;
-    transition: all 600ms ease-out 1.2s;
+    -webkit-transition: all 400ms ease-out 1.2s;
+    -moz-transition: all 400ms ease-out 1.2s;
+    -o-transition: all 400ms ease-out 1.2s;
+    transition: all 400ms ease-out 1.2s;
     display: inline-block;
 }
 
 .videolink:before{
-    content: 'x';
-    padding-right: 8px;
-    padding-left: 10px;
+    width: 8px;
+    height: 9px;
+    content: '';
+    background: url(../img/play.png)no-repeat center center;
+    -webkit-background-size: 8px 9px;
+    -moz-background-size: 8px 9px;
+    -o-background-size: 8px 9px;
+    background-size: 8px 9px;
+    margin-right: 8px;
+    padding-left: 8px;
 }
 
 .covered .videolink{
@@ -666,7 +708,7 @@ p{
 }
 
 .line_composition{
-    display: inline-block;
+    position: relative;
 }
 
 .line_composition:before{
@@ -677,7 +719,6 @@ p{
     display: inline-block;
     top: -5px;
     position: relative;
-    right: 5px;
     -webkit-transition: all 400ms ease-out 1.3s;
     -moz-transition: all 400ms ease-out 1.3s;
     -o-transition: all 400ms ease-out 1.3s;
@@ -688,7 +729,88 @@ p{
     width: 0px;
 }
 
+.eresimpulso-hub .line_composition{
+    position: absolute;
+    left: -45px;
+}
+
+.nopasanada-hub .line_composition{
+    left: 36px;
+}
+
+.muevete-hub .line_composition, .kids-hub .line_composition, .encasa-hub .line_composition{
+    left: 131px;
+}
+
+.logo-impulso_composition{
+    position: relative;
+    left: 40px;
+    opacity: 1;
+    -webkit-transition: all 400ms ease-out 1.2s;
+    -moz-transition: all 400ms ease-out 1.2s;
+    -o-transition: all 400ms ease-out 1.2s;
+    transition: all 400ms ease-out 1.2s;
+}
+
+.covered .logo-impulso_composition{
+    left: 0;
+    opacity: 0;
+}
+
+.logo-impulso-mask{
+    position: absolute;
+    right: 0;
+}
+
+.logo-impulso{
+    width: 167px;
+    height: 61px;
+    background: url('../img/logo-eres-impulso.png')no-repeat;
+    -webkit-background-size: 167px 61px;
+    -moz-background-size: 167px 61px;
+    -o-background-size: 167px 61px;
+    background-size: 167px 61px;
+    opacity: 1;
+    -webkit-transition: all 400ms ease-out 1.2s;
+    -moz-transition: all 400ms ease-out 1.2s;
+    -o-transition: all 400ms ease-out 1.2s;
+    transition: all 400ms ease-out 1.2s;
+    position: absolute;
+    left: 0;
+}
+
+.covered .logo-impulso{
+    width: 0;
+    opacity: 0;
+}
+
+.iconos-encasa{
+    position: relative;
+    width: 151px;
+    height: 29px;
+    background: url('../img/iconos-en-casa.png')no-repeat;
+    -webkit-background-size: 151px 29px;
+    -moz-background-size: 151px 29px;
+    -o-background-size: 151px 29px;
+    background-size: 151px 29px;
+    left: 53px;
+    margin-top: 15px;
+    opacity: 1;
+    -webkit-transition: all 400ms ease-out 1.2s;
+    -moz-transition: all 400ms ease-out 1.2s;
+    -o-transition: all 400ms ease-out 1.2s;
+    transition: all 400ms ease-out 1.2s;
+}
+
+.covered .iconos-encasa{
+    width: 0;
+    opacity: 0;
+    left:0;
+}
+
 .thumbnail{
+    width: 100%;
+    height: auto;
     position: absolute;
     min-width: 204px;
     right: 0;
@@ -702,6 +824,7 @@ p{
     -moz-transition: all 400ms ease-out .7s;
     -o-transition: all 400ms ease-out .7s;
     transition: all 400ms ease-out .7s;
+    clear: both;
 }
 
 .covered .thumbnail-mask-wrapper{
@@ -774,6 +897,7 @@ p{
     height: 3px;
     background: #45cdff;
     position: relative;
+    top: 3px;
     right: -60px;
     -webkit-transition: all 400ms ease-out 1.3s;
     -moz-transition: all 400ms ease-out 1.3s;
@@ -781,9 +905,29 @@ p{
     transition: all 400ms ease-out 1.3s;
 }
 
+.gama-hub .btn:after{
+    right: -100px;
+}
+
 .covered .btn:after{
     width: 0;
     opacity: 0;
+}
+
+.gama-hub .btn:before{
+    position: relative;
+    left: 0;
+    top: 10px;
+    width: 42px;
+    height: 34px;
+    padding-right: 16px;
+    content: '';
+    background: url('../img/icono-nuestra-gama.jpg')no-repeat;
+    -webkit-background-size: 42px 34px;
+    -moz-background-size: 42px 34px;
+    -o-background-size: 42px 34px;
+    background-size: 42px 34px;
+    display: inline-block;
 }
 
 .swiper-hub{
@@ -961,6 +1105,61 @@ p{
 }
 
 
+/* Fixed Measures HUB */
+.nopasanada-hub .title-mask-wrapper{
+    right: -70px;
+}
+
+.nopasanada-hub .thumbnail-mask{
+    width: 251px;
+    top: 30px;
+}
+
+.eresimpulso-hub .thumbnail-mask{
+    width: 232px;
+    top: 70px;
+}
+
+.muevete-hub .title-mask-wrapper{
+    right: 60px;
+}
+
+.muevete-hub .thumbnail-mask{
+    width: 316px;
+    min-height: 211px;
+    top: 60px;
+}
+
+.kids-hub .title-mask-wrapper{
+    right: 145px;
+}
+
+.kids-hub .thumbnail-mask{
+    width: 238px;
+    min-height: 317px;
+    top: 10px;
+}
+
+.gama-hub .title-mask-wrapper{
+    right: -37px;
+}
+
+.gama-hub .thumbnail-mask{
+    width: 275px;
+    min-height: 201px;
+    top: 5px;
+}
+
+.encasa-hub .title-mask-wrapper{
+    right: 100px;
+}
+
+.encasa-hub .thumbnail-mask{
+    width: 351px;
+    min-height: 220px;
+    top: 16px;
+}
+
 /* landing */
 
 .image-mask-layer{
@@ -978,35 +1177,57 @@ p{
     height: 440px;
     top: 150px;
     margin-left: 106px;
-    background: url('../img/no-pasanada.jpg')no-repeat;
-    background-position: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    /*background: url('../img/no-pasanada.jpg')no-repeat;*/
     filter: grayscale(100%);
     opacity: 0.2;
     /*transition: height 1s ease 0s, margin 1s ease 0s, top 1s ease 0s;*/
     transition: all 1.6s ease;
 }
 
-/*.backimageBig{
-    position: relative;
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    background: url('../02.jpg') no-repeat;
-    background-size: 70%;
-    background-position-x: -78%;
-    background-position-y: -40%;
-    opacity: .43;
-    filter: grayscale(100%);
-    transition: width 1s .0s ease, height 1s .0s ease, background 1s .0s ease, opacity 1s .0s ease, filter 1s .0s;
-}*/
+.nopasanada-land.image-mask-layer{
+    background: url('../img/no-pasanada.jpg')no-repeat;
+     background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
-/*.backimageLand{
-    background: url('img/backimage_01.png') no-repeat;
-}*/
+.eresimpulso-land.image-mask-layer{
+    background: url('../img/eres-impulso.jpg')no-repeat;
+     background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.muevete-land.image-mask-layer{
+    background: url('../img/muevete.jpg')no-repeat;
+     background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.kids-land.image-mask-layer{
+    background: url('../img/kids.jpg')no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.nuestra-gama-land.image-mask-layer{
+    background: url('../img/nuestra-gama.jpg')no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 .image-mask-layer.scale{
     height: 100%;
@@ -1020,63 +1241,101 @@ p{
 .container-text{
     position: fixed;
     top: 25px;
-    right: -50%;
-    width: 50%;
+    right: 25px;
+    width: 0;
+    opacity: 0;
     height: -webkit-calc(100% - 50px);
     height: -moz-calc(100% - 50px);
     height: calc(100% - 50px);
     background: #fff;
     overflow: hidden;
-    -webkit-transition: right 800ms cubic-bezier(.28,0,.07,1) .3s;
-    -moz-transition: right 800ms cubic-bezier(.28,0,.07,1) .3s;
-    -o-transition: right 800ms cubic-bezier(.28,0,.07,1) .3s;
-    transition: right 800ms cubic-bezier(.28,0,.07,1) .3s;
+    -webkit-transition: all 800ms cubic-bezier(.28,0,.07,1) .3s;
+    -moz-transition: all 800ms cubic-bezier(.28,0,.07,1) .3s;
+    -o-transition: all 800ms cubic-bezier(.28,0,.07,1) .3s;
+    transition: all 800ms cubic-bezier(.28,0,.07,1) .3s;
 }
 
 .container-text.showed{
-    right: 25px;
+    width: 50%;
+    opacity: 1;
 }
 
-.content-landing{
+.inner-block-section{
     position: relative;
     bottom: 0;
-    width: 380px;
+    width: 390px;
     height: 100%;
     text-align: center;
     margin: 0 auto;
+    overflow: hidden;
     -webkit-transition: all 800ms cubic-bezier(.28,0,.07,1);
     -moz-transition: all 800ms cubic-bezier(.28,0,.07,1);
     -o-transition: all 800ms cubic-bezier(.28,0,.07,1);
     transition: all 800ms cubic-bezier(.28,0,.07,1);
 }
 
-.content-landing h2{
+.inner-block-section h2{
     font-family: Futuralt;
     font-size: 35px;
     line-height: 38px;
     color: #3b3b3b;
     text-transform: uppercase;
     margin: 0;
-    -webkit-transition: all 400ms ease-out;
-    -moz-transition: all 400ms ease-out;
-    -o-transition: all 400ms ease-out;
-    transition: all 400ms ease-out;
+    -webkit-transition: all 600ms ease-out .8s;
+    -moz-transition: all 600ms ease-out .8s;
+    -o-transition: all 600ms ease-out .8s;
+    transition: all 600ms ease-out .8s;
 }
 
-.content-landing h1{
+.inner-block-section h1{
     font-family: Futuralt;
     font-size: 45px;
     line-height: 48px;
     color: #3b3b3b;
     text-transform: uppercase;
     margin: 0;
-    -webkit-transition: all 400ms ease-out;
-    -moz-transition: all 400ms ease-out;
-    -o-transition: all 400ms ease-out;
-    transition: all 400ms ease-out
+    -webkit-transition: all 600ms ease-out .8s;
+    -moz-transition: all 600ms ease-out .8s;
+    -o-transition: all 600ms ease-out .8s;
+    transition: all 600ms ease-out .8s;
 }
 
-.content-landing p{
+.eresimpulso-land + .container-text .inner-block-section h1, .kids-land + .container-text .inner-block-section h1{
+    font-size: 58px;
+    line-height: 58px;
+}
+
+.muevete-land + .container-text .inner-block-section h2{
+    font-size: 28px;
+}
+
+.muevete-land + .container-text .inner-block-section h1{
+    text-align: right;
+    font-size: 30px;
+    line-height: 30px;
+    padding-right: 40px;
+}
+
+.muevete-land + .container-text .inner-block-section h1:before{
+    content: '';
+    width: 190px;
+    height: 36px;
+    background: url('../img/logo-muevete-magenta.png');
+    -webkit-background-size: 190px 36px;
+    -moz-background-size: 190px 36px;
+    -o-background-size: 190px 36px;
+    background-size: 190px 36px;
+    display: inline-block;
+    position: relative;
+    left: -7px;
+}
+
+.nuestra-gama + .container-text .inner-block-section h1{
+    font-size: 116px;
+    line-height: 116px; 
+}
+
+.inner-block-section p{
     position: relative;
     color: #707070;
     font-size: 14px;
@@ -1092,10 +1351,11 @@ p{
 
 .cover p{
     padding: 70px 0;
-    -webkit-transition: all 400ms ease-out .2s;
-    -moz-transition: all 400ms ease-out .2s;
-    -o-transition: all 400ms ease-out .2s;
-    transition: all 400ms ease-out .2s;
+    margin-bottom: 0;
+    -webkit-transition: all 400ms ease-out 1s;
+    -moz-transition: all 400ms ease-out 1s;
+    -o-transition: all 400ms ease-out 1s;
+    transition: all 400ms ease-out 1s;
 }
 
 .cover p:before{
@@ -1111,31 +1371,46 @@ p{
 }
 
 .arrow-down{
-    width: 13px;
-    height: 52px;
-    cursor: pointer;
+    width: 1px;
+    height: 37px;
+    position: absolute;
+    display: block;
+    background: #a9a9a9;
     left: 50%;
-    position: relative;
-    margin-left: -6px;
-    top: 67px;
+    margin-left: -1px;
+    -webkit-transition: height 400ms ease-out 1.2s;
+    -moz-transition: height 400ms ease-out 1.2s;
+    -o-transition: height 400ms ease-out 1.2s;
+    transition: height 400ms ease-out 1.2s;
 }
 
-.arrow-down:after{
+.arrow-down:before{
     width: 13px;
-    height: 52px;
+    height: 7px;
     content: '';
     background: url(../img/arrow-down.png)no-repeat;
-    background-color: #ccc; 
-    -webkit-background-size: 13px 52px;
-    -moz-background-size: 13px 52px;
-    -o-background-size: 13px 52px;
-    background-size: 13px 52px;
+    -webkit-background-size: 13px 7px;
+    -moz-background-size: 13px 7px;
+    -o-background-size: 13px 7px;
+    background-size: 13px 7px;
     display: block;
+    cursor: pointer;
+    position: relative;
+    top:45px;
+    left: 50%;
+    margin-left: -7px;
+    -webkit-transition: all 400ms ease-out 1.6s;
+    -moz-transition: all 400ms ease-out 1.6s;
+    -o-transition: all 400ms ease-out 1.6s;
+    transition: all 400ms ease-out 1.6s;
 }
 
-.start * {
+.start .arrow-down:before{
     opacity: 0;
-    transform: translateY(40px);
+}
+
+.start .arrow-down{
+    height: 0;
 }
 
 .block-cover{
@@ -1146,23 +1421,280 @@ p{
     height: 100%;
     overflow-x: hidden;
     overflow-y: scroll; 
-    width: -webkit-calc(380px + 50px);
-    width: -moz-calc(380px + 50px);
-    width: calc(380px + 50px);
+    width: -webkit-calc(390px + 50px);
+    width: -moz-calc(390px + 50px);
+    width: calc(390px + 50px);
     padding-right: 50px;
 }
 
-.block-section p{
-    padding-bottom: 200px;
+.content-landing{
+    text-align: center;
+    color: #707070;
+    padding: 80px 0 65px;
 }
 
-.inner-block-section{
+.content-landing h3{
+    font-family: Futuralt;
+    font-size: 39px;
+    line-height: 44px;
+    color: #3b3b3b;
+    margin: 50px 0 25px;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+/* eres-impulso landing content */
+#logo-impulso-blue{
+    width: 255px;
+    height: auto;
+    margin-bottom: 37px;
+}
+
+#reunion-mujeres{
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    height: auto;
+    margin:40px 0;
+}
+
+.eres-impulso-content h3{
+    margin-top: 100px;
+    font-size: 33px;
+    line-height: 39px;
+}
+
+#fake-space{
+    width: 40px;
+    display: inline-block;
+}
+
+/* muevete landing content */
+.muevete-content h2{
+    font-size: 33px;
+    line-height: 33px;
+    font-family: Futuralt;
+    color: #3b3b3b;
+    text-transform: uppercase;
+}
+
+.muevete-content .composition{
+    position: relative;
+    width: 100%;
+    margin:70px 0 60px;
+}
+
+#muevete-running{
+    position: relative;
+    width: 387px;
+    height: auto;
+    left: 35px;
+}
+
+#muevete-running-02{
+    position: absolute;
+    width: 308px;
+    height: auto;
+    top: -60px;
+    left: -53px;
+}
+
+#dots-pattern{
+    position: absolute;
+    width: 145px;
+    height: auto;
+    bottom: 40px;
+    left: -24px;
 }
 
 
+.muevete-content h4{
+    font-size: 17px;
+    line-height: 24px;
+    margin: 0;
+    font-family: 'Asap-Bold';
+}
+
+.muevete-content h4 + p, .muevete-content h4 + p + p{
+    padding-bottom: 30px;
+}
+
+/* kids landing content */
+.kids-content h2{
+    font-size: 25px;
+    line-height: 25px;
+    padding-bottom: 25px;
+}
+
+.font-vella-kids{
+    width: 100%;
+    height: auto;
+    margin: 30px 0 65px;
+}
+
+.catalogo-kids{
+    margin-bottom: 80px;
+}
+
+.row-kids{
+    clear: both;
+    overflow: auto;
+    margin-bottom: 45px;
+}
+
+.row-kids:nth-child(2) .description-kids{
+    text-align: right;
+}
+
+.bottle-kids{
+    width: 20%;
+    float: left;
+    text-align: center; 
+}
+
+#first-btl{
+    width: 37px;
+    height: auto;
+}
+
+#mickey-btl{
+    width: 41px;
+    height: auto;
+}
+
+#disney-btl{
+    width: 87px;
+    height: auto;
+}
+
+.description-kids{
+    width: 80%;
+    text-align: left;
+    float: left;
+}
+
+.kids-content h4{
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+    font-family: 'Asap-Bold';
+}
+
+.description-kids p{
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.row-kids:last-child .description-kids{
+    padding-left: 25px;
+}
+
+.last-block-kids{
+    margin-bottom: 80px;
+}
+
+.last-block-kids p{
+    padding-top: 25px;
+}
+
+/* */
+
+.btn-web{
+    font-family: Futuralt;
+    text-transform: uppercase;
+    font-size: 15px;
+    line-height: 13px;
+    color: #fff;
+    padding: 22px 40px;
+    background: #27d3eb;
+    float: right;
+    margin-bottom: 115px;
+}
+
+.content-landing-foot{
+    clear: both;
+    padding-top: 20px;
+    border-top: 2px solid #eaeaea;
+    text-align: left;
+}
+
+.content-landing-foot p{
+    font-size: 12px;
+    color: #b6b6b6;
+    display: inline-block;
+}
+
+.credits{
+    float: right;
+}
+
+.credits a{
+    font-family: 'Asap-Bold';
+}
+
+.footer-landing{
+    width: -webkit-calc(50% - 25px);
+    width: -moz-calc(50% - 25px);
+    width: calc(50% - 25px);
+    position: fixed;
+    bottom:25px;
+    left:0;
+    height: 20px;
+}
+
+.right-foot{
+    font-family: 'Asap-Bold';
+    text-transform: uppercase;
+    color: #2f2f2f;
+    letter-spacing: 1px;
+    font-size: 12px;
+    line-height: 14px;
+    position: absolute;
+    right: 40px;
+    bottom: 12px;
+    opacity: 1;
+    -webkit-transition: all 400ms ease-out .4s;
+    -moz-transition: all 400ms ease-out .4s;
+    -o-transition: all 400ms ease-out .4s;
+    transition: all 400ms ease-out .4s;
+}
+
+.right-foot:before{
+    content:'';
+    display: inline-block;
+    width: 34px;
+    height: 1px;
+    margin-right: 14px;
+    margin-bottom: 3px;
+    background: #2f2f2f;
+    -webkit-transition: all 400ms ease-out .8s;
+    -moz-transition: all 400ms ease-out .8s;
+    -o-transition: all 400ms ease-out .8s;
+    transition: all 400ms ease-out .8s;
+}
+
+.right-foot.white:before{
+    background: #fff;
+}
+
+.start .right-foot:before{
+    width: 0;
+}
+
+.left-foot img{
+    position: absolute;
+    height: 38px;
+    width: auto;
+    left:50px;
+    bottom: 6px;
+    opacity: 1;
+    -webkit-transition: all 400ms ease-out .2s;
+    -moz-transition: all 400ms ease-out .2s;
+    -o-transition: all 400ms ease-out .2s;
+    transition: all 400ms ease-out .2s;
+}
+
+.start * {
+    opacity: 0;
+    transform: translateY(40px);
+}
 
 
 /* footer */
