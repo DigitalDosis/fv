@@ -1,0 +1,99 @@
+/* Small devices (desktops, 992px and down) */
+@media (max-width: 992px) {
+  .swiper-home_slide h1 {
+    font-size: 27px;
+    line-height: 29px;
+    max-width: 260px;
+  }
+
+  /* landings */
+  .content.landing{
+  	overflow: visible;
+  }
+
+  .image-mask-layer.scale{
+  	height: 25%;
+  }
+
+  .container-text{
+  	position: relative;
+  	top: 0;
+  	left: 0;
+  	width: 100%;
+  	overflow: visible;
+	padding: 0 60px;
+  }
+
+  .container-text.showed{
+  	width: 100%;
+  }
+
+  .inner-block-section{
+  	width: 100%;
+  	max-width: 490px;
+  	overflow: visible;
+  }
+
+  .block-section{
+  	width: 100%;
+  	overflow: visible;
+  	padding-right: 0;
+  }
+
+  .inner-block-section h1{
+  	font-size: 40px !important;
+  	line-height: 41px !important;
+	max-width: 220px;
+	margin: 0 auto;
+  }
+
+  .cover p{
+  	padding: 60px 0;
+  }
+
+  .cover p:before{
+  	top: 25px;
+  }
+
+  .content-landing h3{
+  	text-align: center;
+  }
+
+  .eres-impulso-content h3{
+  	font-size: 20px;
+	line-height: 27px;
+  }
+
+  #fake-space{
+  	display: none;
+  }
+
+  .btn-web{
+  	float: none;
+	padding: 22px 10px;
+	font-size: 12px;
+  }
+
+  .content-landing-foot{
+  	width: 100%;
+	left: 0px;
+	text-align: center;
+  }
+
+  .credits{
+  	float: none;
+  }
+
+  .content-landing-foot p{
+  	margin-bottom: 0;
+  }
+
+  .footer-landing{
+  	position: relative;
+  	width: 100%;
+  	bottom: 0px;
+  }
+
+
+
+}
