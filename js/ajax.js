@@ -75,6 +75,34 @@ $(document).ready(function() {
 		scrollCover();
 	});
 
+	//desplegar info catalogo nuestra-gama
+	$('.bottle').on('click', function(){
+		var selectedBtl = $(this).attr("class");
+		var classSelectedBtl = selectedBtl.replace('bottle ', '');
+
+		//set arrow-position
+		$(this).parent().next('.panel-info-bottle').find('#line-arrow').removeClass().addClass(classSelectedBtl);
+
+
+		var infoBtl = '.label.'+classSelectedBtl;
+		var panelSel = $(this).parent().next('.panel-info-bottle');
+
+
+		if( panelSel.hasClass('open-panel') ){
+			$('.label').removeClass('active-info');
+			panelSel.find(infoBtl).addClass('active-info');
+		}else{
+			$('.panel-info-bottle').slideUp( "fast", function() {
+			    $('.label').removeClass('active-info');
+			    $('.panel-info-bottle').removeClass('open-panel');
+			});
+			panelSel.slideDown( "fast", function() {
+				$(this).addClass('open-panel');
+			    $(this).find(infoBtl).addClass('active-info');
+		  	});
+		}
+	});
+
 
 });
 
